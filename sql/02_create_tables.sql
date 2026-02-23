@@ -70,19 +70,31 @@ CREATE TABLE entity_addresses (
         ON DELETE CASCADE
 );
 
--- 6. Alerts Table
+-- 6. Alerts Table 
+-- **Revised to include additional value-add fields that weren't included in the original structure
 
 CREATE TABLE alerts (
-	alert_id INT AUTO_INCREMENT PRIMARY KEY,
+    alert_id INT AUTO_INCREMENT PRIMARY KEY,
     wallet_id INT NOT NULL,
-    ruLe_name VARCHAR(100) NOT NULL,
+    transaction_id INT NOT NULL,
+    entity_id INT NOT NULL,
+    rule_name VARCHAR(100) NOT NULL,
     risk_score INT NOT NULL,
     alert_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status ENUM('open', 'reviewed', 'dismissed') DEFAULT 'open',
-    
+    notes VARCHAR(255),
+
     CONSTRAINT fk_alert_wallet
-		FOREIGN KEY (wallet_id)
+        FOREIGN KEY (wallet_id)
         REFERENCES wallets(wallet_id)
+        ON DELETE CASCADE,
+    CONSTRAINT fk_alert_transaction
+        FOREIGN KEY (transaction_id)
+        REFERENCES transactions(tx_id)
+        ON DELETE CASCADE,
+    CONSTRAINT fk_alert_entity
+        FOREIGN KEY (entity_id)
+        REFERENCES entities(entity_id)
         ON DELETE CASCADE
 );
 
