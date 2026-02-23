@@ -1,0 +1,2 @@
+CREATE DATABASE crypto_aml_monitoring;
+USE crypto_aml_monitoring;
