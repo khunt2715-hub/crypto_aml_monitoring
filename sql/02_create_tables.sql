@@ -51,7 +51,7 @@ CREATE TABLE entities (
 	entity_id INT AUTO_INCREMENT PRIMARY KEY,
     entity_name VARCHAR(255) NOT NULL,
     entity_type ENUM('sanctioned', 'mixer', 'darknet_market', 'scam', 'high_risk_exchange') NOT NULL,
-    risk_dategory ENUM('low', 'medium', 'high') NOT NULL DEFAULT 'medium',
+    risk_category ENUM('low', 'medium', 'high') NOT NULL DEFAULT 'medium',
     base_risk_score INT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
