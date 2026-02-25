@@ -1,5 +1,5 @@
 -- =====================================================================
--- TABLE CREATION - for User Leve Risk Aggregation
+-- TABLE CREATION - for User Level Risk Aggregation
 -- =====================================================================
 
 CREATE TABLE user_risk_summary (
